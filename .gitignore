@@ -160,3 +160,5 @@ cython_debug/
 #.idea/
 mmdetection/
 best_coco_bbox_mAP_epoch_3.pth
+epoch_18.pth
+epoch_19.pth
