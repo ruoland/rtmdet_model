@@ -119,29 +119,6 @@ def merge_ocr_results(ocr_results, detected_cells, y_threshold=20, x_threshold=1
     logger.info(f"{len(ocr_results)}개의 OCR 결과를 {len(merged_results)}개의 그룹으로 병합했습니다.")
     return merged_results
 
-
-def merge_overlapping_cells(cells):
-    """겹치는 셀들을 병합합니다."""
-    merged_cells = []
-    for cell in cells:
-        overlapped = False
-        for i, merged_cell in enumerate(merged_cells):
-            if cells_overlap(cell, merged_cell):
-                # 셀 병합
-                x1 = min(cell['bbox'][0], merged_cell['bbox'][0])
-                y1 = min(cell['bbox'][1], merged_cell['bbox'][1])
-                x2 = max(cell['bbox'][2], merged_cell['bbox'][2])
-                y2 = max(cell['bbox'][3], merged_cell['bbox'][3])
-                merged_cells[i] = {
-                    'bbox': (x1, y1, x2, y2),
-                    'score': max(cell['score'], merged_cell['score']),
-                    'text': merged_cell['text'] + '\n' + cell.get('text', '')
-                }
-                overlapped = True
-                break
-        if not overlapped:
-            merged_cells.append(cell)
-    return merged_cells
 def cells_overlap(cell1, cell2, overlap_threshold=0.5):
     """
     두 셀이 지정된 임계값 이상으로 겹치는지 확인합니다.

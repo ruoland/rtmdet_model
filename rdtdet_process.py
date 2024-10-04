@@ -1,15 +1,15 @@
 import cv2
 from model_detection import detect_objects
-def process_image(image_path, rtmdet, ocr, threshold, target_size=1000):
-    original_img = cv2.imread(image_path)
-    if original_img is None:
-        raise ValueError(f"{image_path}에서 이미지를 불러오는데 실패했습니다.")
+def process_image(img, rtmdet, ocr, threshold, target_size=3000):
+    img = cv2.imread(img)
+    if img is None:
+        raise ValueError("유효하지 않은 이미지입니다.")
     
     # 이미지 리사이즈
-    height, width = original_img.shape[:2]
+    height, width = img.shape[:2]
     scale = target_size / max(height, width)
     new_size = (int(width * scale), int(height * scale))
-    resized_img = cv2.resize(original_img, new_size)
+    resized_img = cv2.resize(img, new_size)
     
     # 표 모델 실행 및 객체 감지
     detected_objects = detect_objects(rtmdet, resized_img, threshold)
@@ -17,6 +17,8 @@ def process_image(image_path, rtmdet, ocr, threshold, target_size=1000):
     # OCR 실행
     ocr_result = ocr.ocr(resized_img, cls=False)
     
+    for line in ocr_result:
+        print(f"OCR 결과: {line[1][0]}, 신뢰도 : {line[1][1]}")
     # 원본 크기로 좌표 변환
     for obj in detected_objects:
         obj['bbox'] = [int(coord / scale) for coord in obj['bbox']]
@@ -29,4 +31,4 @@ def process_image(image_path, rtmdet, ocr, threshold, target_size=1000):
                 ocr_result[i][j][1]
             )
     
-    return original_img, detected_objects, ocr_result[0]
+    return img, detected_objects, ocr_result[0]

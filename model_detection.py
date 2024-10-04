@@ -7,7 +7,7 @@ import json
 
 # 모델 설정
 CONFIG_FILE = 'mmdetection/configs/rtmdet/rtmdet_s_8xb32-300e_coco.py'
-CHECKPOINT_FILE = r"c:\Users\opron\Downloads\epoch_20.pth"
+CHECKPOINT_FILE = r"c:\Users\opron\Downloads\epoch_4.pth"
 DEVICE = 'cpu'
 IMAGE_THRESHOLD = 0.5
 RESIZE_SCALE = 2.0  # 1.0은 원본 크기, 2.0은 2배 확대, 0.5는 절반으로 축소
@@ -130,10 +130,9 @@ def save_results(output_dir, result_image, detected_objects):
 
 def main():
     img_path = r"20220304_174813461_61050.jpeg"
-    output_dir = r"./output"
+    output_dir = r"./output/result.jpeg"
     config_file = 'mmdetection/configs/rtmdet/rtmdet_s_8xb32-300e_coco.py'
-    checkpoint_file = r"c:\Users\opron\Downloads\epoch_18.pth"
-    rtmdet = initialize_model(config_file, checkpoint_file)
+    rtmdet = initialize_model(config_file, CHECKPOINT_FILE)
     
     # 이미지 처리 및 객체 감지 (리사이즈 수행)
     original_img, detected_objects = process_image(img_path, rtmdet, do_resize=True)
@@ -154,6 +153,8 @@ def main():
     
     # 예시 4: 모든 객체 표시
     save_custom_results({class_name: True for class_name in CLASS_NAMES})
+    result_image = draw_results(original_img, detected_objects,{class_name: True for class_name in CLASS_NAMES})
+    save_results(output_dir, result_image, detected_objects)
 
 if __name__ == "__main__":
     main()

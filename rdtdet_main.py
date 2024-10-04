@@ -9,6 +9,7 @@ from rdtdet_io import save_cropped_images, save_json
 from rdtdet_process import process_image
 from rdtdet_analyze import analyze_and_create_timetable
 from rdtdet_display import display_results, print_merged_ocr_results
+from rdtdet_day_utils import get_day_of_week
 import uuid
 
 os.environ['KMP_DUPLICATE_LIB_OK'] = 'TRUE'
@@ -18,9 +19,8 @@ os.environ['OMP_NUM_THREADS'] = '1'
 ocr = PaddleOCR(use_angle_cls=False, lang='korean')
 rtmdet = initialize_model()
 IMAGE_THRESHOLD = 0.5
-
 if __name__ == "__main__":
-    img_path = r"original.png"
+    img_path = r"joeun.jpg"
     output_dir = "ocr_cell"
     os.makedirs(output_dir, exist_ok=True)
 
@@ -35,7 +35,7 @@ if __name__ == "__main__":
     merged_ocr_results = merge_ocr_results(ocr_results, detected_cells)
     
     # merged_ocr_results 출력
-    print_merged_ocr_results(merged_ocr_results)
+    #print_merged_ocr_results(merged_ocr_results)
     
     # merged_ocr_results를 JSON 파일로 저장
     merged_ocr_json = [
@@ -58,9 +58,10 @@ if __name__ == "__main__":
     for i, row in enumerate(timetable):
         for j, cell in enumerate(row):
             if cell['content']:
+                is_day_header = cell.get('is_day_header', False)
                 entry = {
                     "id": str(uuid.uuid4()),
-                    "day_of_week": timetable[0][j].get('day', ''),
+                    "day_of_week": cell.get('day', get_day_of_week(j)),
                     "period": timetable[i][0].get('time', str(i)),
                     "start_time": cell.get('start_time', ''),
                     "end_time": cell.get('end_time', ''),
@@ -70,13 +71,14 @@ if __name__ == "__main__":
                     "consecutive_classes": cell.get('consecutive_classes', 1),
                     "cell_type": cell['type']
                 }
+                if is_day_header:
+                    entry["is_day_header"] = True
+                    entry["ocr_confidence"] = cell.get('ocr_confidence', 0.0)
+                    entry['subject'] = entry['day_of_week']
+
                 timetable_entries.append(entry)
 
-    # 결과 출력
-    for entry in timetable_entries:
-        logger.info(f"시간표 항목: {entry}")
-
-        # JSON으로 저장
+    # JSON으로 저장
     save_json(timetable_entries, os.path.join(output_dir, "timetable.json"))
     
     # 결과 표시
