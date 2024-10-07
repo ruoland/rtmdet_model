@@ -18,9 +18,9 @@ os.environ['OMP_NUM_THREADS'] = '1'
 # 모델 초기화
 ocr = PaddleOCR(use_angle_cls=False, lang='korean')
 rtmdet = initialize_model()
-IMAGE_THRESHOLD = 0.5
+IMAGE_THRESHOLD = 0.7
 if __name__ == "__main__":
-    img_path = r"joeun.jpg"
+    img_path = r"OCR\ocr4.jpeg"
     output_dir = "ocr_cell"
     os.makedirs(output_dir, exist_ok=True)
 

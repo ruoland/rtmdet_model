@@ -155,3 +155,226 @@ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.862
 +----------------------+-------+--------+--------+-------+-------+-------+
 10/04 15:17:47 - mmengine - INFO - bbox_mAP_copypaste: 0.862 0.881 0.872 0.054 0.350 0.864
 10/04 15:17:49 - mmengine - INFO - Epoch(val) [6][250/250]    coco/bbox_mAP: 0.8620  coco/bbox_mAP_50: 0.8810  coco/bbox_mAP_75: 0.8720  coco/bbox_mAP_s: 0.0540  coco/bbox_mAP_m: 0.3500  coco/bbox_mAP_l: 0.8640  coco/cell_precision: 0.9320  coco/table_precision: 0.9960  coco/row_precision: 0.9330  coco/column_precision: 0.9750  coco/merged_cell_precision: 0.6940  coco/overflow_cell_precision: 0.8990  coco/merged_overflow_cell_precision: 0.6090  data_time: 0.0387  time: 0.5108
+ 
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.862
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.881
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.871
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.056
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.366
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.864
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.983
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.983
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.983
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.107
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.671
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.984
++----------------------+-------+--------+--------+-------+-------+-------+
+| category             | mAP   | mAP_50 | mAP_75 | mAP_s | mAP_m | mAP_l |
++----------------------+-------+--------+--------+-------+-------+-------+
+| cell                 | 0.932 | 0.942  | 0.942  | 0.162 | 0.876 | 0.936 |
+| table                | 0.996 | 1.0    | 1.0    | nan   | nan   | 0.996 |
+| row                  | 0.933 | 0.976  | 0.954  | nan   | 0.109 | 0.934 |
+| column               | 0.975 | 0.986  | 0.983  | nan   | 0.0   | 0.975 |
+| merged_cell          | 0.693 | 0.712  | 0.696  | 0.005 | 0.129 | 0.701 |
+| overflow_cell        | 0.9   | 0.916  | 0.909  | 0.0   | 0.955 | 0.9   |
+| merged_overflow_cell | 0.607 | 0.634  | 0.616  | nan   | 0.125 | 0.607 |
++----------------------+-------+--------+--------+-------+-------+-------+
+10/07 03:23:21 - mmengine - INFO - bbox_mAP_copypaste: 0.862 0.881 0.871 0.056 0.366 0.864
+10/07 03:23:22 - mmengine - INFO - Epoch(val) [9][250/250]    coco/bbox_mAP: 0.8620  coco/bbox_mAP_50: 0.8810  coco/bbox_mAP_75: 0.8710  coco/bbox_mAP_s: 0.0560  coco/bbox_mAP_m: 0.3660  coco/bbox_mAP_l: 0.8640  coco/cell_precision: 0.9320  coco/table_precision: 0.9960  coco/row_precision: 0.9330  coco/column_precision: 0.9750  coco/merged_cell_precision: 0.6930  coco/overflow_cell_precision: 0.9000  coco/merged_overflow_cell_precision: 0.6070  data_time: 0.0405  time: 0.4966
+
+Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.862
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.881
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.872
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.056
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.379
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.864
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.983
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.984
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.984
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.113
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.677
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.984
+10/07 04:04:52 - mmengine - INFO - 
++----------------------+-------+--------+--------+-------+-------+-------+
+| category             | mAP   | mAP_50 | mAP_75 | mAP_s | mAP_m | mAP_l |
++----------------------+-------+--------+--------+-------+-------+-------+
+| cell                 | 0.932 | 0.942  | 0.941  | 0.162 | 0.87  | 0.934 |
+| table                | 0.996 | 1.0    | 1.0    | nan   | nan   | 0.996 |
+| row                  | 0.931 | 0.976  | 0.954  | nan   | 0.117 | 0.932 |
+| column               | 0.974 | 0.986  | 0.984  | nan   | 0.0   | 0.974 |
+| merged_cell          | 0.697 | 0.713  | 0.699  | 0.006 | 0.132 | 0.705 |
+| overflow_cell        | 0.9   | 0.916  | 0.911  | 0.0   | 0.957 | 0.9   |
+| merged_overflow_cell | 0.607 | 0.633  | 0.617  | nan   | 0.2   | 0.607 |
++----------------------+-------+--------+--------+-------+-------+-------+
+10/07 04:04:52 - mmengine - INFO - bbox_mAP_copypaste: 0.862 0.881 0.872 0.056 0.379 0.864
+10/07 04:04:53 - mmengine - INFO - Epoch(val) [10][250/250]    coco/bbox_mAP: 0.8620  coco/bbox_mAP_50: 0.8810  coco/bbox_mAP_75: 0.8720  coco/bbox_mAP_s: 0.0560  coco/bbox_mAP_m: 0.3790  coco/bbox_mAP_l: 0.8640  coco/cell_precision: 0.9320  coco/table_precision: 0.9960  coco/row_precision: 0.9310  coco/column_precision: 0.9740  coco/merged_cell_precision: 0.6970  coco/overflow_cell_precision: 0.9000  coco/merged_overflow_cell_precision: 0.6070  data_time: 0.0364  time: 0.4901
+
+
+아래부터는 새로운 데이터셋, 학습을 해도 큰 차이가 없어서 새로 시작함.
+병합 셀이나 색깔 등의 특수한 셀을 많이 줄였고, 일반적인 흰색 배경의 검은 색 선 표의 비중을 늘려 전이학습을 함
+현재까지의 모델은 다양한 색의 표나 다양한 형태의 표에 강력한 성능을 보였지만, 그런데 정작 일반적인 표에서는 정확도가 0.5~0.6 사이임을 발견하였고
+또 한참도 전에 단순한 표로만 생성하여 학습한 적이 있었는데, 그때 일반적인 표로도 꽤 괜찮은 성능을 보여주었었음
+
+
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.891
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.931
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.907
+
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.067
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.613
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.893
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.953
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.954
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.954
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.102
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.733
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.955
+10/07 07:15:17 - mmengine - INFO - 
++----------------------+-------+--------+--------+-------+-------+-------+
+| category             | mAP   | mAP_50 | mAP_75 | mAP_s | mAP_m | mAP_l |
++----------------------+-------+--------+--------+-------+-------+-------+
+| cell                 | 0.966 | 0.986  | 0.983  | 0.27  | 0.828 | 0.972 |
+| table                | 0.982 | 1.0    | 0.997  | nan   | nan   | 0.982 |
+| row                  | 0.925 | 0.974  | 0.955  | nan   | 0.19  | 0.926 |
+| column               | 0.972 | 0.987  | 0.985  | 0.0   | 0.414 | 0.972 |
+| merged_cell          | 0.768 | 0.829  | 0.767  | 0.0   | 1.0   | 0.768 |
+| overflow_cell        | 0.895 | 0.936  | 0.907  | 0.0   | 0.633 | 0.899 |
+| merged_overflow_cell | 0.728 | 0.804  | 0.756  | nan   | nan   | 0.728 |
++----------------------+-------+--------+--------+-------+-------+-------+
+10/07 07:15:17 - mmengine - INFO - bbox_mAP_copypaste: 0.891 0.931 0.907 0.067 0.613 0.893
+10/07 07:15:18 - mmengine - INFO - Epoch(val) [1][72/72]    coco/cell_precision: 0.9660  coco/table_precision: 0.9820  coco/row_precision: 0.9250  coco/column_precision: 0.9720  coco/merged_cell_precision: 0.7680  coco/overflow_cell_precision: 0.8950  coco/merged_overflow_cell_precision: 0.7280  coco/bbox_mAP: 0.8910  coco/bbox_mAP_50: 0.9310  coco/bbox_mAP_75: 0.9070  coco/bbox_mAP_s: 0.0670  coco/bbox_mAP_m: 0.6130  coco/bbox_mAP_l: 0.8930  data_time: 0.0709  time: 0.8747
+
+
+주요 개선 사항:
+
+    전체적인 정확도 향상: mAP가 0.862에서 0.891로 증가
+    병합된 셀 탐지 성능 향상: 'merged_cell'의 mAP가 0.697에서 0.768로, 'merged_overflow_cell'의 mAP가 0.607에서 0.728로 크게 향상
+    중간 크기 객체 탐지 성능 대폭 향상: mAP_m이 0.379에서 0.613으로 증가
+    모든 카테고리에서 고르게 성능이 향상
+
+
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.904
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.938
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.920
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.066
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.601
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.906
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.961
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.961
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.961
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.097
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.700
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.963
+10/07 07:37:27 - mmengine - INFO - 
++----------------------+-------+--------+--------+-------+-------+-------+
+| category             | mAP   | mAP_50 | mAP_75 | mAP_s | mAP_m | mAP_l |
++----------------------+-------+--------+--------+-------+-------+-------+
+| cell                 | 0.967 | 0.987  | 0.984  | 0.263 | 0.83  | 0.973 |
+| table                | 0.984 | 1.0    | 0.99   | nan   | nan   | 0.984 |
+| row                  | 0.928 | 0.975  | 0.956  | nan   | 0.201 | 0.929 |
+| column               | 0.973 | 0.988  | 0.986  | 0.0   | 0.335 | 0.973 |
+| merged_cell          | 0.788 | 0.843  | 0.787  | 0.0   | 1.0   | 0.789 |
+| overflow_cell        | 0.895 | 0.935  | 0.909  | 0.0   | 0.64  | 0.9   |
+| merged_overflow_cell | 0.794 | 0.838  | 0.831  | nan   | nan   | 0.794 |
++----------------------+-------+--------+--------+-------+-------+-------+
+10/07 07:37:27 - mmengine - INFO - bbox_mAP_copypaste: 0.904 0.938 0.920 0.066 0.601 0.906
+10/07 07:37:28 - mmengine - INFO - Epoch(val) [2][72/72]    coco/cell_precision: 0.9670  coco/table_precision: 0.9840  coco/row_precision: 0.9280  coco/column_precision: 0.9730  coco/merged_cell_precision: 0.7880  coco/overflow_cell_precision: 0.8950  coco/merged_overflow_cell_precision: 0.7940  coco/bbox_mAP: 0.9040  coco/bbox_mAP_50: 0.9380  coco/bbox_mAP_75: 0.9200  coco/bbox_mAP_s: 0.0660  coco/bbox_mAP_m: 0.6010  coco/bbox_mAP_l: 0.9060  data_time: 0.0653  time: 0.8558
+
+
+전체적인 mAP (mean Average Precision)가 0.891에서 0.904로 증가,m 이는 모델의 전반적인 성능이 향상됨
+IoU (Intersection over Union) 0.5에서의 mAP가 0.931에서 0.938로 증가, 객체 검출의 정확도가 향상됨
+대부분의 카테고리에서 성능이 향상되었습니다:
+
+    'cell'의 mAP가 0.966에서 0.967로 소폭 상승
+    'table'의 mAP가 0.982에서 0.984로 상승
+    'merged_cell'의 mAP가 0.768에서 0.788로 크게 상승
+    'merged_overflow_cell'의 mAP가 0.728에서 0.794로 대폭 상승
+
+중간 크기 객체의 검출 성능(mAP_m)이 0.613에서 0.601로 약간 감소했지만, 여전히 이전 실험들에 비해 높은 수준을 유지하고 있습니다.
+작은 크기 객체의 검출 성능(mAP_s)이 0.067에서 0.066으로 약간 감소했지만, 큰 변화는 아닙니다.
+큰 크기 객체의 검출 성능(mAP_l)이 0.893에서 0.906으로 향상되었습니다.
+Average Recall (AR) 값들도 전반적으로 향상되었습니다.
+
+
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.898
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.938
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.914
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.068
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.460
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.900
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.958
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.959
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.959
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.099
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.686
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.960
+10/07 10:34:05 - mmengine - INFO - 
++----------------------+-------+--------+--------+-------+-------+-------+
+| category             | mAP   | mAP_50 | mAP_75 | mAP_s | mAP_m | mAP_l |
++----------------------+-------+--------+--------+-------+-------+-------+
+| cell                 | 0.971 | 0.988  | 0.987  | 0.274 | 0.865 | 0.976 |
+| table                | 0.983 | 1.0    | 0.99   | nan   | nan   | 0.983 |
+| row                  | 0.925 | 0.97   | 0.953  | nan   | 0.195 | 0.926 |
+| column               | 0.972 | 0.987  | 0.985  | 0.0   | 0.291 | 0.972 |
+| merged_cell          | 0.819 | 0.873  | 0.823  | 0.0   | 0.34  | 0.819 |
+| overflow_cell        | 0.895 | 0.939  | 0.916  | 0.0   | 0.61  | 0.898 |
+| merged_overflow_cell | 0.725 | 0.809  | 0.746  | nan   | nan   | 0.725 |
++----------------------+-------+--------+--------+-------+-------+-------+
+10/07 10:34:05 - mmengine - INFO - bbox_mAP_copypaste: 0.898 0.938 0.914 0.068 0.460 0.900
+10/07 10:34:06 - mmengine - INFO - Epoch(val) [3][108/108]    coco/cell_precision: 0.9710  coco/table_precision: 0.9830  coco/row_precision: 0.9250  coco/column_precision: 0.9720  coco/merged_cell_precision: 0.8190  coco/overflow_cell_precision: 0.8950  coco/merged_overflow_cell_precision: 0.7250  coco/bbox_mAP: 0.8980  coco/bbox_mAP_50: 0.9380  coco/bbox_mAP_75: 0.9140  coco/bbox_mAP_s: 0.0680  coco/bbox_mAP_m: 0.4600  coco/bbox_mAP_l: 0.9000  data_time: 0.0794  time: 0.8996
+
+
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.892
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.937
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.910
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.055
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.449
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.894
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.955
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.955
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.955
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.098
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.642
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.956
+10/07 11:08:23 - mmengine - INFO - 
++----------------------+-------+--------+--------+-------+-------+-------+
+| category             | mAP   | mAP_50 | mAP_75 | mAP_s | mAP_m | mAP_l |
++----------------------+-------+--------+--------+-------+-------+-------+
+| cell                 | 0.962 | 0.985  | 0.976  | 0.221 | 0.834 | 0.969 |
+| table                | 0.975 | 0.999  | 0.99   | nan   | nan   | 0.975 |
+| row                  | 0.915 | 0.974  | 0.954  | nan   | 0.13  | 0.916 |
+| column               | 0.954 | 0.983  | 0.969  | 0.0   | 0.293 | 0.954 |
+| merged_cell          | 0.775 | 0.835  | 0.782  | 0.0   | 0.389 | 0.776 |
+| overflow_cell        | 0.901 | 0.942  | 0.919  | 0.0   | 0.597 | 0.904 |
+| merged_overflow_cell | 0.762 | 0.842  | 0.78   | nan   | nan   | 0.762 |
++----------------------+-------+--------+--------+-------+-------+-------+
+10/07 11:08:23 - mmengine - INFO - bbox_mAP_copypaste: 0.892 0.937 0.910 0.055 0.449 0.894
+10/07 11:08:25 - mmengine - INFO - Epoch(val) [4][108/108]    coco/cell_precision: 0.9620  coco/table_precision: 0.9750  coco/row_precision: 0.9150  coco/column_precision: 0.9540  coco/merged_cell_precision: 0.7750  coco/overflow_cell_precision: 0.9010  coco/merged_overflow_cell_precision: 0.7620  coco/bbox_mAP: 0.8920  coco/bbox_mAP_50: 0.9370  coco/bbox_mAP_75: 0.9100  coco/bbox_mAP_s: 0.0550  coco/bbox_mAP_m: 0.4490  coco/bbox_mAP_l: 0.8940  data_time: 0.0678  time: 0.8748
+
+
+Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.855
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.908
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.876
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.050
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.418
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.857
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.945
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.946
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.946
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.091
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.608
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.947
+10/07 11:42:52 - mmengine - INFO - 
++----------------------+-------+--------+--------+-------+-------+-------+
+| category             | mAP   | mAP_50 | mAP_75 | mAP_s | mAP_m | mAP_l |
++----------------------+-------+--------+--------+-------+-------+-------+
+| cell                 | 0.951 | 0.982  | 0.972  | 0.2   | 0.83  | 0.958 |
+| table                | 0.974 | 0.99   | 0.987  | nan   | nan   | 0.974 |
+| row                  | 0.906 | 0.963  | 0.938  | nan   | 0.131 | 0.907 |
+| column               | 0.943 | 0.984  | 0.971  | 0.0   | 0.234 | 0.944 |
+| merged_cell          | 0.756 | 0.839  | 0.764  | 0.0   | 0.291 | 0.757 |
+| overflow_cell        | 0.877 | 0.929  | 0.903  | 0.0   | 0.602 | 0.881 |
+| merged_overflow_cell | 0.58  | 0.668  | 0.599  | nan   | nan   | 0.58  |
++----------------------+-------+--------+--------+-------+-------+-------+
+10/07 11:42:52 - mmengine - INFO - bbox_mAP_copypaste: 0.855 0.908 0.876 0.050 0.418 0.857
+10/07 11:42:53 - mmengine - INFO - Epoch(val) [5][108/108]    coco/cell_precision: 0.9510  coco/table_precision: 0.9740  coco/row_precision: 0.9060  coco/column_precision: 0.9430  coco/merged_cell_precision: 0.7560  coco/overflow_cell_precision: 0.8770  coco/merged_overflow_cell_precision: 0.5800  coco/bbox_mAP: 0.8550  coco/bbox_mAP_50: 0.9080  coco/bbox_mAP_75: 0.8760  coco/bbox_mAP_s: 0.0500  coco/bbox_mAP_m: 0.4180  coco/bbox_mAP_l: 0.8570  data_time: 0.0701  time: 0.8945

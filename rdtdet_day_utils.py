@@ -72,8 +72,9 @@ def process_day_row(timetable, merged_ocr_results):
 
 def get_ocr_result_for_cell(cell, merged_ocr_results):
     for result, _ in merged_ocr_results:
-        if is_overlapping(cell['bbox'], result[0]):
-            return result[1]
+       if 'bbox' in cell and not cell['bbox']:
+            if is_overlapping(cell['bbox'], result[0]):
+                return result[1]
     return None
 
 def is_overlapping(bbox1, bbox2):
