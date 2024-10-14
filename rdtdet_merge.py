@@ -49,7 +49,8 @@ def is_inside_cell(ocr_box, cell_bbox):
     return (cell_bbox[0] <= ocr_center[0] <= cell_bbox[2] and
             cell_bbox[1] <= ocr_center[1] <= cell_bbox[3])
 
-def merge_ocr_results(ocr_results, detected_cells, y_threshold=20, x_threshold=10):
+def merge_ocr_results(ocr_results, y_threshold=20, x_threshold=10):
+    # 인식한 글자 합치기
     def _merge_group(group):
         boxes = [line[0] for line in group]
         texts = [line[1][0] for line in group]

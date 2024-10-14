@@ -163,3 +163,7 @@ best_coco_bbox_mAP_epoch_3.pth
 epoch_18.pth
 epoch_19.pth
 ocr_cell/
+EPOCH/epoch_2.pth
+EPOCH/epoch_4.pth
+EPOCH/rtmdet_1004,716.ipynb
+j-day-chatbot/

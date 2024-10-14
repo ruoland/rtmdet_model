@@ -7,9 +7,9 @@ import json
 
 # 모델 설정
 CONFIG_FILE = 'mmdetection/configs/rtmdet/rtmdet_s_8xb32-300e_coco.py'
-CHECKPOINT_FILE = r"c:\Users\opron\Downloads\epoch_4(1).pth"
+CHECKPOINT_FILE = r"C:\Users\opron\Downloads\epoch_10(1).pth"
 DEVICE = 'cpu'
-IMAGE_THRESHOLD = 0.5
+IMAGE_THRESHOLD = 0.6
 RESIZE_SCALE = 3.0  # 1.0은 원본 크기, 2.0은 2배 확대, 0.5는 절반으로 축소
 MIN_IMAGE_SIZE = (800, 600)  # 최소 이미지 크기 (너비, 높이)
 MAX_IMAGE_SIZE = (2400, 2400)  # 최대 이미지 크기 (너비, 높이)
@@ -155,6 +155,3 @@ def main():
     save_custom_results({class_name: True for class_name in CLASS_NAMES})
     result_image = draw_results(original_img, detected_objects,{class_name: True for class_name in CLASS_NAMES})
     save_results(output_dir, result_image, detected_objects)
-
-if __name__ == "__main__":
-    main()
