@@ -1,0 +1,55 @@
+https://drive.google.com/file/d/1e3SCfWEmb_l32y9LKoZpID2jxTyPG4cy/view?usp=sharing
+셀, 표, 행, 열, 헤더 행, 헤더 열
+
+ https://drive.google.com/file/d/1Hr_aNzQnnxr0GJ_ie_McNUsvAxl2k_lI/view?usp=sharing
+병합된 셀 추가 버전
+ 
+ https://drive.google.com/file/d/19F-cVZaLuguJgyQ-M2c7HrhhKQszMJWI/view?usp=sharing
+ 
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.096
+ Average Precision  (AP) @[ IoU=0.50      | area=   all | maxDets=1000 ] = 0.146
+ Average Precision  (AP) @[ IoU=0.75      | area=   all | maxDets=1000 ] = 0.117
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.013
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.521
+ Average Precision  (AP) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.097
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=100 ] = 0.108
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=300 ] = 0.110
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=   all | maxDets=1000 ] = 0.110
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= small | maxDets=1000 ] = 0.050
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area=medium | maxDets=1000 ] = 0.618
+ Average Recall     (AR) @[ IoU=0.50:0.95 | area= large | maxDets=1000 ] = 0.111
+10/19 11:49:20 - mmengine - INFO - 
++---------------+-------+--------+--------+-------+-------+-------+
+| category      | mAP   | mAP_50 | mAP_75 | mAP_s | mAP_m | mAP_l |
++---------------+-------+--------+--------+-------+-------+-------+
+| cell          | 0.582 | 0.874  | 0.699  | 0.013 | 0.521 | 0.584 |
+| table         | 0.0   | 0.0    | 0.0    | nan   | nan   | 0.0   |
+| row           | 0.0   | 0.0    | 0.0    | nan   | nan   | 0.0   |
+| column        | 0.0   | 0.0    | 0.0    | nan   | nan   | 0.0   |
+| merged_cell   | nan   | nan    | nan    | nan   | nan   | nan   |
+| overflow_cell | nan   | nan    | nan    | nan   | nan   | nan   |
+| header_row    | 0.0   | 0.0    | 0.0    | nan   | nan   | 0.0   |
+| header_column | 0.0   | 0.0    | 0.0    | nan   | nan   | 0.0   |
++---------------+-------+--------+--------+-------+-------+-------+
+10/19 11:49:20 - mmengine - INFO - bbox_mAP_copypaste: 0.096 0.146 0.117 0.013 0.521 0.097
+10/19 11:49:21 - mmengine - INFO - Epoch(val) [5][72/72]    coco/cell_precision: 0.5820  coco/table_precision: 0.0000  coco/row_precision: 0.0000  coco/column_precision: 0.0000  coco/merged_cell_precision: nan  coco/overflow_cell_precision: nan  coco/header_row_precision: 0.0000  coco/header_column_precision: 0.0000  coco/bbox_mAP: 0.0960  coco/bbox_mAP_50: 0.1460  coco/bbox_mAP_75: 0.1170  coco/bbox_mAP_s: 0.0130  coco/bbox_mAP_m: 0.5210  coco/bbox_mAP_l: 0.0970  data_time: 0.0831  time: 0.9055
+
+셀, 표, 행, 열, 헤더 행, 헤더 열만 5에폭 학습 시킴
+
+0/19 13:56:06 - mmengine - INFO - 
++---------------+-------+--------+--------+-------+-------+-------+
+| category      | mAP   | mAP_50 | mAP_75 | mAP_s | mAP_m | mAP_l |
++---------------+-------+--------+--------+-------+-------+-------+
+| cell          | 0.816 | 0.986  | 0.955  | 0.0   | 0.726 | 0.818 |
+| table         | 0.0   | 0.0    | 0.0    | nan   | nan   | 0.0   |
+| row           | 0.0   | 0.0    | 0.0    | nan   | nan   | 0.0   |
+| column        | 0.0   | 0.0    | 0.0    | nan   | nan   | 0.0   |
+| merged_cell   | nan   | nan    | nan    | nan   | nan   | nan   |
+| overflow_cell | nan   | nan    | nan    | nan   | nan   | nan   |
+| header_row    | 0.0   | 0.0    | 0.0    | nan   | nan   | 0.0   |
+| header_column | 0.0   | 0.0    | 0.0    | nan   | nan   | 0.0   |
++---------------+-------+--------+--------+-------+-------+-------+
+10/19 13:56:06 - mmengine - INFO - bbox_mAP_copypaste: 0.135 0.164 0.159 0.000 0.726 0.136
+10/19 13:56:07 - mmengine - INFO - Epoch(val) [10][72/72]    coco/cell_precision: 0.8160  coco/table_precision: 0.0000  coco/row_precision: 0.0000  coco/column_precision: 0.0000  coco/merged_cell_precision: nan  coco/overflow_cell_precision: nan  coco/header_row_precision: 0.0000  coco/header_column_precision: 0.0000  coco/bbox_mAP: 0.1350  coco/bbox_mAP_50: 0.1640  coco/bbox_mAP_75: 0.1590  coco/bbox_mAP_s: 0.0000  coco/bbox_mAP_m: 0.7260  coco/bbox_mAP_l: 0.1360  data_time: 0.0840  time: 0.9000
+
+10에폭까지 행과 열을 인식하지 못 하고 있음.. 대체 

@@ -1,0 +1,18 @@
++----------------------+-------+--------+--------+-------+-------+-------+
+| category             | mAP   | mAP_50 | mAP_75 | mAP_s | mAP_m | mAP_l |
++----------------------+-------+--------+--------+-------+-------+-------+
+| cell                 | 0.95  | 0.987  | 0.977  | 0.021 | 0.795 | 0.951 |
+| table                | 0.006 | 0.01   | 0.01   | nan   | nan   | 0.006 |
+| row                  | 0.692 | 0.832  | 0.73   | nan   | nan   | 0.692 |
+| column               | 0.692 | 0.796  | 0.768  | nan   | 0.0   | 0.693 |
+| merged_cell          | 0.831 | 0.898  | 0.852  | nan   | nan   | 0.831 |
+| overflow_cell        | 0.728 | 0.856  | 0.82   | nan   | nan   | 0.728 |
+| merged_overflow_cell | 0.338 | 0.4    | 0.37   | nan   | nan   | 0.338 |
++----------------------+-------+--------+--------+-------+-------+-------+
+10/19 04:33:49 - mmengine - INFO - bbox_mAP_copypaste: 0.605 0.683 0.647 0.021 0.398 0.605
+10/19 04:33:50 - mmengine - INFO - Epoch(val) [25][143/143]    coco/cell_precision: 0.9500  coco/table_precision: 0.0060  coco/row_precision: 0.6920  coco/column_precision: 0.6920  coco/merged_cell_precision: 0.8310  coco/overflow_cell_precision: 0.7280  coco/merged_overflow_cell_precision: 0.3380  coco/bbox_mAP: 0.6050  coco/bbox_mAP_50: 0.6830  coco/bbox_mAP_75: 0.6470  coco/bbox_mAP_s: 0.0210  coco/bbox_mAP_m: 0.3980  coco/bbox_mAP_l: 0.6050  data_time: 0.0781  time: 0.9203
+
+몇가지 치명적인 버그 있어서 새로 시작했는데 뭐였는지 기억이 안 나네 레이블링이 어긋나는 버그? 
+한 데이터셋으로 25 에폭 돌림, 색깔 다양화, 병합된 오버플로 셀 생성률 증가, 다양한 데이터, 총 2만개
+
+현재 행과 열 인식률에 어려움 있음, table도 마찬가지

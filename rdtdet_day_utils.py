@@ -28,8 +28,8 @@ def process_day_row(timetable, merged_ocr_results):
         return timetable
 
     day_row = timetable[0]
-    days = ['월', '화', '수', '목', '금', '토', '일']
-    day_index = 0
+    days = ['','월', '화', '수', '목', '금', '토', '일']
+    day_index = 1
 
     for j, cell in enumerate(day_row):
         if j == 0:  # 첫 번째 열은 시간 정보용이므로 건너뜁니다

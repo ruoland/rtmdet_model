@@ -1,6 +1,6 @@
 import re
 from rdtdet_log import logger
-
+import datetime
 def extract_time_info(text):
     patterns = [
         r'(\d{1,2}):(\d{2})\s*[~-]\s*(\d{1,2}):(\d{2})',  # 시간 범위 (예: 18:50-19:25)

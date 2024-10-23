@@ -167,3 +167,7 @@ EPOCH/epoch_2.pth
 EPOCH/epoch_4.pth
 EPOCH/rtmdet_1004,716.ipynb
 j-day-chatbot/
+output/result2/
+output/result2_gray/
+table_testset/
+output/

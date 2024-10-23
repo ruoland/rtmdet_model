@@ -14,11 +14,11 @@ import uuid, time
 
 # 모델 초기화
 rtmdet = initialize_model()
-IMAGE_THRESHOLD = 0.7
+IMAGE_THRESHOLD = 0.6
 if __name__ == "__main__":
     start_time = time.time()
 
-    img_path = r"original_grayscale.png"
+    img_path = r"joeun.jpg"
     output_dir = "ocr_cell"
     os.makedirs(output_dir, exist_ok=True)
 

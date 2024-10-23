@@ -1,11 +1,9 @@
 import time
 import numpy as np
-from model_detection import detect_objects
 from rdtdet_log import logger
 from datetime import datetime, timedelta
 from rdtdet_time_utils import extract_time_info, calculate_end_time
-from rdtdet_day_utils import process_day_row, get_day_of_week, is_day_cell
-from rdtdet_time_utils import is_time_format
+from rdtdet_day_utils import process_day_row
 def analyze_and_create_timetable(detected_objects, merged_ocr_results):
     rows = [obj for obj in detected_objects if obj['label'] == 2]
     columns = [obj for obj in detected_objects if obj['label'] == 3]
@@ -13,26 +11,13 @@ def analyze_and_create_timetable(detected_objects, merged_ocr_results):
     
     columns.sort(key=lambda x: x['bbox'][0])
     
-    # days_of_week 생성 로직
-    days_of_week = []
-    header_row, header_col = identify_headers(cells)
-    for cell in header_row:
-        content = get_text_in_bbox(cell['bbox'], merged_ocr_results)
-        if is_day_cell(content):
-            days_of_week.append(get_day_of_week(content))
-    logger.info(f"감지된 요일: {days_of_week}")
-
-    if not days_of_week:
-        days_of_week = ['월', '화', '수', '목', '금', '토', '일']
-        logger.info(f"표에서 요일을 찾지 못 하였습니다. 기본 값으로 채웁니다. : {days_of_week}")
-
-    
-    
-    timetable, day_column_mapping = create_initial_timetable(columns, cells, merged_ocr_results, days_of_week)
+    # 기본 시간표 구조 생성
+    timetable = create_initial_timetable(columns, cells, merged_ocr_results)
     
     # 요일 및 시간 정보 처리
     timetable = process_day_row(timetable, merged_ocr_results)
-        # 요일 정보 로깅
+    
+    # 요일 정보 로깅
     logger.info("요일 정보 확인:")
     for i, row in enumerate(timetable):
         for j, cell in enumerate(row):
@@ -40,7 +25,6 @@ def analyze_and_create_timetable(detected_objects, merged_ocr_results):
                 logger.info(f"행 {i}, 열 {j}: 요일 = {cell['day']}")
             else:
                 logger.info(f"행 {i}, 열 {j}: 요일 정보 없음")
-    logger.info(f"Timetable structure after processing: {timetable}")
 
     # 셀 내부의 시간 정보 처리 및 consecutive_classes 계산
     timetable = process_timetable_cells(timetable, columns, detected_objects)
@@ -55,23 +39,13 @@ def analyze_and_create_timetable(detected_objects, merged_ocr_results):
                 logger.info(f"행 {i}, 열 {j}: 요일 정보 없음")
 
     logger.info(f"최종 시간표 구조: {len(timetable)}행 x {len(timetable[0]) if timetable else 0}열")
-    return timetable, header_row, header_col
-def identify_headers(cells, tolerance=5):
-    cells.sort(key=lambda x: (x['bbox'][1], x['bbox'][0]))  # y좌표 먼저, 그 다음 x좌표로 정렬
-    
-    # 헤더 행 식별
-    header_row_y = cells[0]['bbox'][1]
-    header_row = [cell for cell in cells if abs(cell['bbox'][1] - header_row_y) <= tolerance]
-    
-    # 헤더 열 식별
-    header_col_x = cells[0]['bbox'][0]
-    header_col = [cell for cell in cells if abs(cell['bbox'][0] - header_col_x) <= tolerance]
-    
-    return header_row, header_col
-def create_initial_timetable(columns, cells, merged_ocr_results, days_of_week):
-    timetable = []
     header_row, header_col = identify_headers(cells)
-    day_column_mapping = {}  # 요일-열 매핑 추가
+    return timetable, header_row, header_col
+
+
+def create_initial_timetable(columns, cells, merged_ocr_results):
+    timetable = []
+    header_row, _ = identify_headers(cells)
     
     # 헤더 행 처리
     header_row_info = []
@@ -81,14 +55,8 @@ def create_initial_timetable(columns, cells, merged_ocr_results, days_of_week):
         cell_info['row'] = 0
         if i == 0:
             cell_info['is_time_header'] = True
-            cell_info['day'] = ''
         else:
             cell_info['is_day_header'] = True
-            if i - 1 < len(days_of_week):
-                cell_info['day'] = days_of_week[i - 1]
-                day_column_mapping[i] = cell_info['day']  # 매핑 추가 (1부터 시작)
-            else:
-                cell_info['day'] = ''
         header_row_info.append(cell_info)
     timetable.append(header_row_info)
 
@@ -114,17 +82,29 @@ def create_initial_timetable(columns, cells, merged_ocr_results, days_of_week):
                 time_value = extract_time_from_header(cell_info['content'])
                 if time_value:
                     cell_info['start_time'] = time_value
-            elif 1 <= cell_info['column'] <= len(days_of_week):
-                cell_info['day'] = days_of_week[cell_info['column'] - 1]
-            else:
-                cell_info['day'] = ''
             
             current_row.append(cell_info)
     
     if current_row:
         timetable.append(current_row)
     
-    return timetable, day_column_mapping
+    return timetable
+
+
+def identify_headers(cells, tolerance=5):
+    cells.sort(key=lambda x: (x['bbox'][1], x['bbox'][0]))  # y좌표 먼저, 그 다음 x좌표로 정렬
+    
+    # 헤더 행 식별
+    
+    header_row_y = cells[0]['bbox'][1]
+    header_row = [cell for cell in cells if abs(cell['bbox'][1] - header_row_y) <= tolerance]
+    
+    # 헤더 열 식별
+    header_col_x = cells[0]['bbox'][0]
+    header_col = [cell for cell in cells if abs(cell['bbox'][0] - header_col_x) <= tolerance]
+    
+    return header_row, header_col
+
 def process_cell(cell, merged_ocr_results, columns, cells):
     cell_content = get_text_in_bbox(cell['bbox'], merged_ocr_results)
     cell_type = get_cell_type(cell['label'])
@@ -154,6 +134,8 @@ def extract_time_from_header(content):
     except ValueError:
         pass
     return None
+from datetime import datetime, timedelta
+
 def process_timetable_cells(timetable, columns, detected_objects):
     for i, row in enumerate(timetable):
         if i == 0:  # 헤더 행 처리
@@ -174,30 +156,29 @@ def process_timetable_cells(timetable, columns, detected_objects):
             if j == 0:  # 시간 열은 이미 처리했으므로 건너뜁니다.
                 continue
 
-            if not cell['content']:
+            if not cell.get('content'):
                 cell['consecutive_classes'] = 1
                 cell['start_time'] = ''
                 cell['end_time'] = ''
                 continue
 
             try:
-                content = cell['content'].replace('\n', '')
+                content = cell.get('content', '').replace('\n', '')
                 cell['consecutive_classes'] = calculate_cell_span(cell, columns, detected_objects)
                 
-                # 요일 정보 적용 (헤더 행에서 가져옴)
-                cell['day_of_week'] = timetable[0][j]['day'] if j < len(timetable[0]) else ''
+                # 요일 정보 확인 (이미 처리되었을 수 있음)
+                if 'day' not in cell and j < len(timetable[0]):
+                    cell['day'] = timetable[0][j].get('day', '')
 
                 # 셀 내용에서 시간 정보 추출 시도
                 cell_time_info = extract_time_info(content)
                 if cell_time_info[0]:
-                    cell_start_time = cell_time_info[0]
-                    cell_end_time = cell_time_info[1]
+                    cell_start_time, cell_end_time = cell_time_info
                 else:
-                    cell_start_time = start_time
-                    cell_end_time = ""
+                    cell_start_time, cell_end_time = start_time, ""
 
                 # 연속 수업에 따른 종료 시간 계산
-                if cell['consecutive_classes'] > 1:
+                if cell['consecutive_classes'] > 1 and not cell_end_time:
                     end_row_index = min(i + cell['consecutive_classes'], len(timetable) - 1)
                     end_time_cell = timetable[end_row_index][0] if timetable[end_row_index] else None
                     if end_time_cell:
@@ -214,8 +195,8 @@ def process_timetable_cells(timetable, columns, detected_objects):
                 cell['start_time'] = cell_start_time
                 cell['end_time'] = cell_end_time
                 
-                logger.info(f"셀 {content} 정보: 타입 = {cell['type']}, 연속 수업 = {cell['consecutive_classes']}, "
-                            f"시작 시간 = {cell_start_time}, 종료 시간 = {cell_end_time}, 요일 = {cell['day_of_week']}")
+                logger.info(f"셀 {content} 정보: 타입 = {cell.get('type', 'Unknown')}, 연속 수업 = {cell['consecutive_classes']}, "
+                            f"시작 시간 = {cell_start_time}, 종료 시간 = {cell_end_time}, 요일 = {cell.get('day', 'Unknown')}")
             except Exception as e:
                 logger.error(f"셀 ({i}, {j}) 처리 중 오류 발생: {str(e)}")
                 cell['start_time'] = ''
@@ -223,6 +204,7 @@ def process_timetable_cells(timetable, columns, detected_objects):
 
     logger.info("시간표 셀 처리 완료")
     return timetable
+
 
 
 def calculate_cell_span(cell, columns, cells):
